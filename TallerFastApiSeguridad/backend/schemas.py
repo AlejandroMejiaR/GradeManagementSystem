@@ -1,25 +1,26 @@
-from pydantic import BaseModel
-from pydantic import BaseModel, Field # <-- 1. IMPORTA Field
+# backend/schemas.py
+from pydantic import BaseModel, Field
+from .roles import UserRole
 
 # Schema para la creación de calificaciones
 class GradeCreate(BaseModel):
     student_name: str
     subject: str
-    score: float
+    # Añadimos validación: ge=Greater than or Equal, le=Less than or Equal
+    score: float = Field(..., ge=0, le=500)
 
 class Grade(GradeCreate):
     id: int
     professor_id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 # Schema para la creación y autenticación de usuarios
 class UserCreate(BaseModel):
     username: str
-    # 2. AÑADE LA VALIDACIÓN
     password: str = Field(..., min_length=8, max_length=70) 
-    role: str
+    role: UserRole
 
 class User(BaseModel):
     id: int
@@ -27,7 +28,7 @@ class User(BaseModel):
     role: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 # Schema para el Token JWT
 class Token(BaseModel):

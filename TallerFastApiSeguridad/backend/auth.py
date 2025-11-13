@@ -7,6 +7,7 @@ import os
 from . import schemas, models
 from sqlalchemy.orm import Session
 from .database import get_db
+from .roles import UserRole
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = os.getenv("ALGORITHM")
@@ -48,9 +49,9 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
     return user
 
 # Dependencia para verificar roles
-def role_required(required_role: str):
+def role_required(required_role: UserRole):
     def check_role(current_user: models.User = Depends(get_current_user)):
-        if current_user.role != required_role:
+        if current_user.role != required_role.value:
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
                 detail="No tienes permisos para realizar esta acción"
