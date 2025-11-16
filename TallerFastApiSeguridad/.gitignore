@@ -58,3 +58,16 @@ logs/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+# ===================================================================
+# Artefactos de Herramientas de Seguridad y Pruebas
+# ===================================================================
+# Ignora la carpeta de trabajo del SonarScanner.
+.scannerwork/
+
+# Ignora los informes de seguridad generados en HTML.
+bearer-report.html
+ZAP-Report.html
+# Puedes añadir una regla más genérica si los nombres de los reportes cambian:
+# *.html
