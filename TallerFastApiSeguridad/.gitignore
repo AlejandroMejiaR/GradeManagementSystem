@@ -67,6 +67,7 @@ yarn-error.log*
 .scannerwork/
 
 # Ignora los informes de seguridad generados en HTML.
+sonar-project.properties
 bearer-report.html
 ZAP-Report.html
 # Puedes añadir una regla más genérica si los nombres de los reportes cambian:
