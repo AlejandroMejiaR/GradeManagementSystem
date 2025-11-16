@@ -6,9 +6,9 @@ import {
     TextField, Grid, Paper, Table, TableBody, TableCell, TableContainer,
     TableHead, TableRow, IconButton, CircularProgress, Alert
 } from '@mui/material';
-import Edit from '@mui/icons-material/Edit';
-import Delete from '@mui/icons-material/Delete';
-import Logout from '@mui/icons-material/Logout';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 // Pequeña función para decodificar el payload del JWT sin librerías externas
 function decodeToken(token) {
@@ -126,7 +126,7 @@ export default function DashboardPage() {
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         Sistema de Calificaciones
                     </Typography>
-                    <Button color="inherit" onClick={handleLogout} startIcon={<Logout />}>
+                    <Button color="inherit" onClick={handleLogout} startIcon={<LogoutIcon />}>
                         Cerrar Sesión
                     </Button>
                 </Toolbar>
